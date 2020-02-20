@@ -1,0 +1,41 @@
+﻿@model IEnumerable<BusService.Models.BusRoute>
+
+@{
+    ViewData["Title"] = "BusRoute";
+}
+
+    <h1>@ViewData["Title"]</h1>
+
+<p>
+    <a asp-action="Create">Create New</a>
+</p>
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.BusRouteCode)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.RouteName)
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+@foreach (var item in Model) {
+        <tr>
+            <td>
+                <a asp-controller="RouteStops" asp-route-BusRouteCode="@item.BusRouteCode">  @Html.DisplayFor(modelItem => item.BusRouteCode) </a>
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.RouteName)
+            </td>
+            <td>
+                <a asp-action="Edit" asp-route-id="@item.BusRouteCode">Edit</a> |
+                <a asp-action="Details" asp-route-id="@item.BusRouteCode">Details</a> |
+                <a asp-action="Delete" asp-route-id="@item.BusRouteCode">Delete</a>
+            </td>
+        </tr>
+}
+    </tbody>
+</table>

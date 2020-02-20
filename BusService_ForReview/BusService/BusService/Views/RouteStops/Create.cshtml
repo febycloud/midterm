@@ -1,0 +1,37 @@
+﻿@model BusService.Models.RouteStop
+
+@{
+    ViewData["Title"] = "Create of "+ ViewData["BusRCode"] +"  "+ViewData["BusRouteName"];
+}
+
+<h1>Create @ViewData["Title"]</h1>
+
+<h4>RouteStop</h4>
+<hr />
+<div class="row">
+    <div class="col-md-4">
+        <form asp-action="Create">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <div class="form-group">
+                <label asp-for="BusStopNumber" class="control-label"></label>
+                <select asp-for="BusStopNumber" class ="form-control" asp-items="ViewBag.BusStopNumber"></select>
+            </div>
+            <div class="form-group">
+                <label asp-for="OffsetMinutes" class="control-label"></label>
+                <input asp-for="OffsetMinutes" class="form-control" />
+                <span asp-validation-for="OffsetMinutes" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <input type="submit" value="Create" class="btn btn-primary" />
+            </div>
+        </form>
+    </div>
+</div>
+
+<div>
+    <a asp-action="Index">Back to List</a>
+</div>
+
+@section Scripts {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+}
